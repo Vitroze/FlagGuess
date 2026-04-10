@@ -11,8 +11,8 @@ FlagGuess est un petit quiz de géographie autour des drapeaux et des pays. L'ut
 - Réinitialisation du score et du cache des données.
 - Interface responsive légère, avec alertes gérées via SweetAlert2.
 - Langages disponibles :
-  * Français
-  * Anglais
+  - Français
+  - Anglais
 
 ## Technologies utilisées
 
@@ -23,11 +23,27 @@ FlagGuess est un petit quiz de géographie autour des drapeaux et des pays. L'ut
 - Font Awesome via CDN
 - API REST Countries
 
-## Lancer le projet
+## Guide d'installation
 
-1. Ouvrir le dossier du projet dans VS Code ou dans votre explorateur de fichiers.
-2. Ouvrir le fichier `index.html` dans un navigateur.
-3. Choisir une région pour démarrer la partie.
+### Pour un utilisateur (tester rapidement le site)
+
+1. Télécharger ou cloner le projet sur votre ordinateur.
+2. Ouvrir le dossier du projet.
+3. Double-cliquer sur `index.html` pour l'ouvrir dans votre navigateur.
+4. Choisir une région pour commencer la partie.
+
+### Pour un développeur
+
+1. Cloner le dépôt :
+
+```bash
+git clone <url-du-repo>
+```
+
+2. Ouvrir le dossier du projet dans VS Code.
+3. Installer l'extension **Live Server** (recommandé).
+4. Lancer le fichier `index.html` avec Live Server pour un rechargement automatique.
+5. Modifier `styles.css` et `script.js`, puis vérifier le rendu dans le navigateur.
 
 ## Notes
 
@@ -36,11 +52,15 @@ FlagGuess est un petit quiz de géographie autour des drapeaux et des pays. L'ut
 - Si les données deviennent obsolètes, vous pouvez vider le cache depuis le menu des paramètres. Les données se retéléchargement automatiquement après 1 heure.
 
 ## Visuel
+
 ### Page d'accueil
+
 <img width="1859" height="921" alt="image" src="https://github.com/user-attachments/assets/98818106-bbef-4f78-a844-ec56c5554697" />
 
 ### Paramètres
+
 <img width="1858" height="924" alt="image" src="https://github.com/user-attachments/assets/2f050bec-aaef-4822-aef1-c4ddb73394ff" />
 
 ### Jouer
+
 <img width="1861" height="920" alt="image" src="https://github.com/user-attachments/assets/d546b332-c8d1-402d-af45-fb991b2fb16c" />
