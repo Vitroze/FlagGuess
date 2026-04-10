@@ -27,23 +27,9 @@ FlagGuess est un petit quiz de géographie autour des drapeaux et des pays. L'ut
 
 ### Pour un utilisateur (tester rapidement le site)
 
-1. Télécharger ou cloner le projet sur votre ordinateur.
-2. Ouvrir le dossier du projet.
-3. Double-cliquer sur `index.html` pour l'ouvrir dans votre navigateur.
-4. Choisir une région pour commencer la partie.
-
-### Pour un développeur
-
-1. Cloner le dépôt :
-
-```bash
-git clone <url-du-repo>
-```
-
-2. Ouvrir le dossier du projet dans VS Code.
-3. Installer l'extension **Live Server** (recommandé).
-4. Lancer le fichier `index.html` avec Live Server pour un rechargement automatique.
-5. Modifier `styles.css` et `script.js`, puis vérifier le rendu dans le navigateur.
+1. Ouvrir le site publié via GitHub Pages : [FlagGuess](https://vitroze.github.io/FlagGuess/).
+2. Si la page n'est pas encore disponible (publication en cours), patienter quelques minutes puis actualiser.
+3. Choisir une région pour commencer la partie.
 
 ## Notes
 
