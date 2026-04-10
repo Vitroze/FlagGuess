@@ -10,6 +10,9 @@ FlagGuess est un petit quiz de géographie autour des drapeaux et des pays. L'ut
 - Paramètres pour changer la langue de l'interface.
 - Réinitialisation du score et du cache des données.
 - Interface responsive légère, avec alertes gérées via SweetAlert2.
+- Langages disponibles :
+  * Français
+  * Anglais
 
 ## Technologies utilisées
 
@@ -31,3 +34,13 @@ FlagGuess est un petit quiz de géographie autour des drapeaux et des pays. L'ut
 - Une connexion Internet est nécessaire pour charger les données des pays depuis l'API.
 - Le jeu utilise `localStorage` pour mémoriser la langue, le score et le cache des données.
 - Si les données deviennent obsolètes, vous pouvez vider le cache depuis le menu des paramètres. Les données se retéléchargement automatiquement après 1 heure.
+
+## Visuel
+### Page d'accueil
+<img width="1859" height="921" alt="image" src="https://github.com/user-attachments/assets/98818106-bbef-4f78-a844-ec56c5554697" />
+
+### Paramètres
+<img width="1858" height="924" alt="image" src="https://github.com/user-attachments/assets/2f050bec-aaef-4822-aef1-c4ddb73394ff" />
+
+### Jouer
+<img width="1861" height="920" alt="image" src="https://github.com/user-attachments/assets/d546b332-c8d1-402d-af45-fb991b2fb16c" />
