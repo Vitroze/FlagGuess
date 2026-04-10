@@ -51,6 +51,8 @@ let Languages = {
       "Êtes-vous sûr de vouloir réinitialiser le cache ? Cela nécessitera de retélécharger les données des pays, mais votre score ne sera pas affecté.",
     reset_cache_success:
       "Le cache a été réinitialisé. Les données des pays seront retéléchargées lorsque vous commencerez une nouvelle partie.",
+    time_up_title: "Temps écoulé !",
+    time_up_text: "Vous avez manqué de temps ! Essayez à nouveau.",
   },
   ["cym"]: {
     title: "Flag Quiz",
@@ -371,8 +373,10 @@ function updateScore(noUpdate) {
   }
 }
 
+let loadingInterval;
 function buttonCheckCorrect(button, correctCountry) {
   button.addEventListener("click", function () {
+    clearInterval(loadingInterval);
     if (button.textContent === correctCountry) {
       sendAlert(
         getLanguage("correct", "Correct !"),
@@ -385,6 +389,7 @@ function buttonCheckCorrect(button, correctCountry) {
         () => {
           startGame();
           updateScore();
+          clearInterval(loadingInterval);
         },
       );
     } else {
@@ -398,28 +403,70 @@ function buttonCheckCorrect(button, correctCountry) {
           .replace("{score}", score),
         "error",
         getLanguage("try_again", "Retry"),
+        () => {
+          restartGame();
+        },
       );
-
-      score = 0;
-      updateScore(true);
-      startGame();
     }
   });
+}
+
+function restartGame() {
+  score = 0;
+  updateScore(true);
+  startGame();
+}
+
+let loadingBar = document.querySelector(".loading-progress");
+let loadingTime = 0;
+let loadingDuration = 15000;
+
+function startLoadingBar() {
+  loadingTime = 0;
+  loadingBar.style.width = "0%";
+  loadingBar.classList.remove("hidden");
+  loadingInterval = setInterval(() => {
+    loadingTime += 100;
+    const progress = Math.min((loadingTime / loadingDuration) * 100, 100);
+    loadingBar.style.width = progress + "%";
+    if (progress >= 100) {
+      clearInterval(loadingInterval);
+      sendAlert(
+        getLanguage("time_up_title", "Time's up!"),
+        getLanguage("time_up_text", "You ran out of time! Try again."),
+        "error",
+        getLanguage("try_again", "Retry"),
+        () => {
+          restartGame();
+        },
+      );
+    }
+  }, 100);
+}
+
+function stopLoadingBar() {
+  clearInterval(loadingInterval);
+  loadingBar.style.width = "0%";
+  loadingBar.classList.add("hidden");
 }
 
 async function startGame() {
   setHiddenLoading(false);
   countrySelected = await searchCountry();
+  stopLoadingBar();
   createFlagImage(countrySelected);
   allResponses = pickRandomCountry(countrySelected);
 
   allResponses.forEach((response) => {
     createOptionButton(response);
   });
+
+  startLoadingBar();
 }
 
 let no_data = document.getElementById("no-data");
 
+stopLoadingBar();
 allButtonCountry.forEach((button) => {
   button.addEventListener("click", async function () {
     let country = this.getAttribute("data-country");
