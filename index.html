@@ -117,6 +117,19 @@
         <label for="language-select" data-language="language">Langue:</label>
         <select id="language-select"></select>
 
+        <label for="timer-toggle" data-language="timer"
+          >Activer le timer:</label
+        >
+        <input type="checkbox" id="timer-toggle" />
+
+        <label for="timer-duration" data-language="timer_duration"
+          >Durée du timer (secondes):</label
+        >
+
+        <div class="timer-duration-container">
+          <span id="timer-duration-value">15</span>
+          <input type="range" id="timer-duration" min="5" max="60" value="15" />
+        </div>
         <label for="reset-score-button" data-language="reset_score"
           >Réinitialisation du score</label
         >

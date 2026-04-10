@@ -224,6 +224,30 @@ li {
   padding: 5px;
 }
 
+.settings-content input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.settings-content input[type="range"] {
+  width: 100%;
+}
+
+.timer-duration-container {
+  position: relative;
+  width: 100%;
+  padding-top: 20px;
+}
+
+#timer-duration-value {
+  position: absolute;
+  top: 0px;
+  transform: translateX(-50%);
+  font-weight: bold;
+  pointer-events: none;
+}
+
 .red-button {
   background-color: #dc3545;
   color: white;

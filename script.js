@@ -227,8 +227,6 @@ async function searchCountry() {
 }
 
 function getCountryName(country) {
-  console.log(country["translations"]);
-
   let keyLanguage = localStorage.getItem("language") || "fra";
   if (
     !country ||
@@ -419,13 +417,24 @@ function restartGame() {
 
 let loadingBar = document.querySelector(".loading-progress");
 let loadingTime = 0;
-let loadingDuration = 15000;
+let loadingDuration = localStorage.getItem("timerDuration")
+  ? parseInt(localStorage.getItem("timerDuration")) * 1000
+  : 15000;
+let storageTimer = localStorage.getItem("activateTimer");
+let activateTimer = storageTimer !== null ? storageTimer === "true" : true;
 
 function startLoadingBar() {
+  if (!activateTimer) return;
+
   loadingTime = 0;
   loadingBar.style.width = "0%";
   loadingBar.classList.remove("hidden");
   loadingInterval = setInterval(() => {
+    if (!activateTimer) {
+      loadingBar.classList.add("hidden");
+      return;
+    }
+
     loadingTime += 100;
     const progress = Math.min((loadingTime / loadingDuration) * 100, 100);
     loadingBar.style.width = progress + "%";
@@ -445,6 +454,7 @@ function startLoadingBar() {
 }
 
 function stopLoadingBar() {
+  if (!activateTimer) return;
   clearInterval(loadingInterval);
   loadingBar.style.width = "0%";
   loadingBar.classList.add("hidden");
@@ -574,7 +584,6 @@ function addLanguage(languageSelect, id, language) {
 let languageSelect = document.getElementById("language-select");
 if (languageSelect) {
   Object.entries(listLanguages).forEach(([id, language]) => {
-    console.log("Adding language option:", language, "with id:", id);
     addLanguage(languageSelect, id, language);
   });
 
@@ -651,3 +660,51 @@ if (resetCacheButton) {
     });
   });
 }
+
+let slider = document.getElementById("timer-duration");
+if (slider) {
+  let duration_value = document.getElementById("timer-duration-value");
+  slider.addEventListener("input", function () {
+    loadingDuration = parseInt(this.value) * 1000;
+    localStorage.setItem("timerDuration", this.value);
+
+    if (duration_value) {
+      let min = parseInt(slider.min);
+      let max = parseInt(slider.max);
+      let value = parseInt(this.value);
+
+      duration_value.textContent = `${this.value}`;
+
+      const percent = ((value - min) / (max - min)) * 100;
+      duration_value.style.left = `${percent}%`;
+    }
+  });
+
+  slider.dispatchEvent(new Event("input"));
+}
+
+let timerToggle = document.getElementById("timer-toggle");
+function updateTimerToggle() {
+  if (!timerToggle) return;
+
+  loadingBar.style.width = "0%";
+  if (activateTimer && chooseCountry.length > 0) {
+    loadingBar.classList.remove("hidden");
+  } else {
+    loadingBar.classList.add("hidden");
+  }
+}
+
+if (timerToggle) {
+  timerToggle.addEventListener("change", function () {
+    activateTimer = this.checked;
+
+    updateTimerToggle();
+
+    localStorage.setItem("activateTimer", this.checked);
+  });
+
+  timerToggle.checked = activateTimer;
+}
+
+updateTimerToggle();
