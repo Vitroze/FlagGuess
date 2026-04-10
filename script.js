@@ -42,7 +42,8 @@ let Languages = {
     settings: "Paramètres",
     language: "Langue",
     reset_score: "Réinitialisation du score",
-    reset_cache: "Réinitialisation du cache (Score non compris)",
+    reset_cache:
+      "Réinitialisation du cache et des données de configurations (Score non compris)",
     reset: "Réinitialiser",
     reset_score_text: "Êtes-vous sûr de vouloir réinitialiser votre score ?",
     reset_score_success: "Votre score a été réinitialisé.",
@@ -53,6 +54,8 @@ let Languages = {
       "Le cache a été réinitialisé. Les données des pays seront retéléchargées lorsque vous commencerez une nouvelle partie.",
     time_up_title: "Temps écoulé !",
     time_up_text: "Vous avez manqué de temps ! Essayez à nouveau.",
+    timer_duration: "Durée du timer (secondes)",
+    activate_timer: "Activer le timer",
   },
   ["cym"]: {
     title: "Flag Quiz",
@@ -83,7 +86,7 @@ let Languages = {
     settings: "Settings",
     language: "Language",
     reset_score: "Reset Score",
-    reset_cache: "Reset Cache (Score not included)",
+    reset_cache: "Reset Cache and Configuration Data (Score not included)",
     reset: "Reset",
     reset_score_text: "Are you sure you want to reset your score?",
     reset_score_success: "Your score has been reset.",
@@ -92,6 +95,10 @@ let Languages = {
       "Are you sure you want to reset the cache? This requires redownloading country data, but your score will not be affected.",
     reset_cache_success:
       "The cache has been reset. Country data will be redownloaded when you start a new game.",
+    time_up_title: "Time's up!",
+    time_up_text: "You ran out of time! Try again.",
+    timer_duration: "Timer duration (seconds)",
+    activate_timer: "Activate timer",
   },
 };
 
