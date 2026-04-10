@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Country Quiz</title>
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Lib - SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Icon -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <nav>
+      <h1 data-language="title">Country Quiz</h1>
+      <ul>
+        <li>
+          <button
+            id="choose-button"
+            data-country="everyone"
+            data-language="everyone"
+          >
+            Tout
+          </button>
+        </li>
+        <li>
+          <button
+            id="choose-button"
+            data-country="europe"
+            data-language="europe"
+          >
+            Europe
+          </button>
+        </li>
+        <li>
+          <button
+            id="choose-button"
+            data-country="africa"
+            data-language="africa"
+          >
+            Afrique
+          </button>
+        </li>
+        <li>
+          <button
+            id="choose-button"
+            data-country="americas"
+            data-language="americas"
+          >
+            Amériques
+          </button>
+        </li>
+        <li>
+          <button id="choose-button" data-country="asia" data-language="asia">
+            Asie
+          </button>
+        </li>
+        <li>
+          <button
+            id="choose-button"
+            data-country="oceania"
+            data-language="oceania"
+          >
+            Océanie
+          </button>
+        </li>
+
+        <li>
+          <button id="settings-button"><i class="fas fa-cog"></i></button>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="score-container">
+      <span id="score" data-language="score">Score: {numberScore}</span>
+      <span id="choose-country" hidden="true" data-language="choose_country"
+        >Vous avez choisi:
+      </span>
+    </div>
+    <div class="game-container">
+      <!-- <div class="flag-container">
+        <img class="flag-image" src="https://flagcdn.com/w320/ci.png" alt="Flag" />
+      </div>
+      <div class="options-container">
+        <button class="option-button" id="option1">1</button>
+        <button class="option-button" id="option2">5</button>
+        <button class="option-button" id="option3">10</button>
+        <button class="option-button" id="option4">15</button>
+      </div> -->
+
+      <h2 id="no-data" data-language="no_data">Veuillez choisir une région</h2>
+
+      <div class="loading-container hidden">
+        <div class="loading-spinner"></div>
+        <p data-language="loading">Chargement en cours...</p>
+      </div>
+    </div>
+
+    <div class="background-dark hidden"></div>
+    <div class="settings-menu hidden">
+      <div class="settings-header">
+        <h2 data-language="settings">Paramètres</h2>
+        <button id="close-settings-button" class="close-button">
+          <i class="fas fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="settings-content">
+        <label for="language-select" data-language="language">Langue:</label>
+        <select id="language-select"></select>
+
+        <label for="reset-score-button" data-language="reset_score"
+          >Réinitialisation du score</label
+        >
+        <button
+          id="reset-score-button"
+          class="red-button"
+          data-language="reset"
+        >
+          Réinitialiser
+        </button>
+
+        <label for="reset-cache-button" data-language="reset_cache"
+          >Réinitialisation du cache (Score non compris)</label
+        >
+        <button
+          id="reset-cache-button"
+          class="red-button"
+          data-language="reset"
+        >
+          Réinitialiser
+        </button>
+      </div>
+    </div>
+  </body>
+
+  <script src="script.js"></script>
+</html>
